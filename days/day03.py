@@ -1,11 +1,3 @@
-def get_common_bits(binaries):
-    n = len(binaries[0])
-    bits = []
-    for i in range(0, n):
-        bits.append(1 if sum(int(bit[i]) for bit in binaries) >= len(binaries) / 2 else 0)
-    return bits
-
-
 def part1(binaries):
     gamma, eps = 0, 0
     common_bits = get_common_bits(binaries)
@@ -33,3 +25,11 @@ def part2(binaries):
             break
 
     return int(oxygen_rating[0], 2) * int(co2_rating[0], 2)
+
+
+def get_common_bits(binaries):
+    n = len(binaries[0])
+    bits = []
+    for i in range(0, n):
+        bits.append(1 if sum(int(bit[i]) for bit in binaries) >= len(binaries) / 2 else 0)
+    return bits

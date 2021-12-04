@@ -10,25 +10,25 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 class Day4Tests(TestCase):
     def test_part1_test1(self):
-        data = read_lines(os.path.join(dir_path, 'inputs/day04_test.txt'), splitter='\n')
+        data = read_lines(os.path.join(dir_path, 'inputs/day04_test.txt'), separator='\n')
         numbers, boards = self.preprocess(data)
         result = part1(numbers, boards)
         self.assertEqual(4512, result)
 
     def test_part1(self):
-        data = read_lines(os.path.join(dir_path, 'inputs/day04.txt'), splitter='\n')
+        data = read_lines(os.path.join(dir_path, 'inputs/day04.txt'), separator='\n')
         numbers, boards = self.preprocess(data)
         result = part1(numbers, boards)
         self.assertEqual(60368, result)
 
     def test_part2_test1(self):
-        data = read_lines(os.path.join(dir_path, 'inputs/day04_test.txt'), splitter='\n')
+        data = read_lines(os.path.join(dir_path, 'inputs/day04_test.txt'), separator='\n')
         numbers, boards = self.preprocess(data)
         result = part2(numbers, boards)
         self.assertEqual(1924, result)
 
     def test_part2(self):
-        data = read_lines(os.path.join(dir_path, 'inputs/day04.txt'), splitter='\n')
+        data = read_lines(os.path.join(dir_path, 'inputs/day04.txt'), separator='\n')
         numbers, boards = self.preprocess(data)
         result = part2(numbers, boards)
         self.assertEqual(17435, result)
