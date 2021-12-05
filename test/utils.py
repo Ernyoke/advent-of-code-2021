@@ -9,15 +9,16 @@ def read_integers(path):
     return [int(i) for i in data.split()]
 
 
-def read_lines_to_tuples(path):
+def read_lines_to_tuples(path, separator=None):
     """
     Read every line from a file. Split every line to tuples and add every tuple to a list
     :param path: path to the file
+    :param separator: separator character or None
     :return: list with tuples
     """
     with open(path, 'r') as f:
         data = f.read()
-    return list(map(lambda line: tuple(line.split()), [word for word in data.split('\n')]))
+    return list(map(lambda line: tuple(line.split(separator)), [word for word in data.split('\n')]))
 
 
 def read_lines(path, separator=None):
