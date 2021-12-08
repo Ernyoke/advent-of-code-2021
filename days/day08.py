@@ -8,7 +8,7 @@ def part1(data):
 def part2(data):
     count = 0
     for notes, signals in data:
-        numbers = compute_numbers(notes)
+        numbers = decode(notes)
         display = ""
         for signal in signals:
             s = set(list(signal))
@@ -19,7 +19,7 @@ def part2(data):
     return count
 
 
-def compute_numbers(notes):
+def decode(notes):
     note_lengths = {}
     for note in notes:
         length = len(note)
