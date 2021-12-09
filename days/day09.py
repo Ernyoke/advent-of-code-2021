@@ -53,35 +53,35 @@ def is_minimum(x, y, positions, data):
 
 
 def get_basin(x, y, cave, touched):
-    queue = [(x, y)]
+    stack = [(x, y)]
     touched[x][y] = 1
     count = 1
-    while queue:
-        cx, cy = queue.pop()
+    while stack:
+        cx, cy = stack.pop()
         ix = cx - 1
         while ix >= 0 and 9 > cave[ix][cy] > cave[ix + 1][cy] and touched[ix][cy] == 0:
-            queue.append((ix, cy))
+            stack.append((ix, cy))
             count += 1
             touched[ix][cy] = 1
             ix -= 1
 
         ix = cx + 1
         while ix < len(cave) and 9 > cave[ix][cy] > cave[ix - 1][cy] and touched[ix][cy] == 0:
-            queue.append((ix, cy))
+            stack.append((ix, cy))
             count += 1
             touched[ix][cy] = 1
             ix += 1
 
         iy = cy - 1
         while iy >= 0 and 9 > cave[cx][iy] > cave[cx][iy + 1] and touched[cx][iy] == 0:
-            queue.append((cx, iy))
+            stack.append((cx, iy))
             count += 1
             touched[cx][iy] = 1
             iy -= 1
 
         iy = cy + 1
         while iy < len(cave[0]) and 9 > cave[cx][iy] > cave[cx][iy - 1] and touched[cx][iy] == 0:
-            queue.append((cx, iy))
+            stack.append((cx, iy))
             count += 1
             touched[cx][iy] = 1
             iy += 1
