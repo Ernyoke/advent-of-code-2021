@@ -44,7 +44,7 @@ def part2(data):
 def is_valid(chunk):
     stack = []
     for char in chunk:
-        if char in ['(', '[', '{', '<']:
+        if char in pairs.keys():
             stack.append(char)
         else:
             if pairs[stack.pop()] != char:
