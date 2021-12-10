@@ -35,11 +35,8 @@ def part2(data):
         score = 0
         valid, _, remaining = is_valid(chunk)
         if valid and remaining:
-            missing = []
             while remaining:
-                missing.append(pairs[remaining.pop()])
-            for char in missing:
-                score = 5 * score + points[char]
+                score = 5 * score + points[pairs[remaining.pop()]]
             scores.append(score)
     return median(scores)
 
