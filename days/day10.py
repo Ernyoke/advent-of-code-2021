@@ -1,3 +1,5 @@
+from statistics import median
+
 pairs = {
     '(': ')',
     '[': ']',
@@ -50,14 +52,3 @@ def is_valid(chunk):
             if pairs[stack.pop()] != char:
                 return False, char, []
     return True, '', stack
-
-
-def median(lst):
-    sorted_lst = sorted(lst)
-    length = len(lst)
-    index = (length - 1) // 2
-
-    if length % 2:
-        return sorted_lst[index]
-    else:
-        return (sorted_lst[index] + sorted_lst[index + 1]) / 2.0
