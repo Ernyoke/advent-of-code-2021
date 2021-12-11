@@ -14,7 +14,6 @@ class Day11Tests(TestCase):
         octopuses = []
         for line in data:
             octopuses.append([int(c) for c in list(line)])
-        print(octopuses)
         self.assertEqual(1656, part1(octopuses, 100))
 
     def test_part1(self):
@@ -22,15 +21,13 @@ class Day11Tests(TestCase):
         octopuses = []
         for line in data:
             octopuses.append([int(c) for c in list(line)])
-        print(octopuses)
-        self.assertEqual(1656, part1(octopuses, 100))
+        self.assertEqual(1620, part1(octopuses, 100))
 
     def test_part2_test1(self):
         data = read_lines('inputs/day11_test2.txt')
         octopuses = []
         for line in data:
             octopuses.append([int(c) for c in list(line)])
-        print(octopuses)
         self.assertEqual(195, part2(octopuses))
 
     def test_part2(self):
@@ -38,5 +35,4 @@ class Day11Tests(TestCase):
         octopuses = []
         for line in data:
             octopuses.append([int(c) for c in list(line)])
-        print(octopuses)
         self.assertEqual(371, part2(octopuses))

@@ -21,7 +21,6 @@ class Day9Tests(TestCase):
         cave = []
         for line in data:
             cave.append([int(c) for c in list(line)])
-        print(cave)
         self.assertEqual(545, part1(cave))
 
     def test_part2_test1(self):

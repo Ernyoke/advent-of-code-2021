@@ -49,9 +49,9 @@ def increment(data):
 
 def find_positions_equals(data, number):
     positions = []
-    for i in range(0, len(data)):
-        for j in range(0, len(data[0])):
-            if data[i][j] == number:
+    for i, line in enumerate(data):
+        for j, value in enumerate(line):
+            if value == number:
                 positions.append((i, j))
     return positions
 

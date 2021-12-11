@@ -20,8 +20,8 @@ def part2(cave):
 
 def get_low_points(cave):
     low_points = []
-    for i in range(0, len(cave)):
-        for j in range(0, len(cave[0])):
+    for i, _ in enumerate(cave):
+        for j, _ in enumerate(cave[0]):
             if is_minimum(i, j, get_neighbours(i, j, cave), cave):
                 low_points.append((i, j))
     return low_points

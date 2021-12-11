@@ -28,8 +28,7 @@ def part2(binaries):
 
 
 def get_common_bits(binaries):
-    n = len(binaries[0])
     bits = []
-    for i in range(0, n):
+    for i in range(0, len(binaries[0])):
         bits.append(1 if sum(int(bit[i]) for bit in binaries) >= len(binaries) / 2 else 0)
     return bits
