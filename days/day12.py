@@ -7,7 +7,7 @@ def part2(graph):
     for key in graph:
         if key.islower():
             touched[key] = 0
-    return traverse_twice(graph, 'start', ['start'], touched)
+    return traverse_twice(graph, 'start', touched)
 
 
 def traverse(graph, current, route):
@@ -21,17 +21,17 @@ def traverse(graph, current, route):
         return result
 
 
-def traverse_twice(graph, current, route, touched):
+def traverse_twice(graph, current, touched):
     if current == 'end':
         return 1
     else:
         result = 0
         for next_cave in graph[current]:
             if next_cave.isupper():
-                result += traverse_twice(graph, next_cave, route + [next_cave], touched)
+                result += traverse_twice(graph, next_cave, touched)
             elif next_cave != 'start' and can_be_visited(next_cave, touched):
                 touched[next_cave] += 1
-                result += traverse_twice(graph, next_cave, route + [next_cave], touched)
+                result += traverse_twice(graph, next_cave, touched)
                 touched[next_cave] -= 1
         return result
 
@@ -42,7 +42,5 @@ def can_be_visited(cave, touched):
         if touched[key] > 1:
             visited_twice = key
             break
-    if visited_twice and touched[cave] > 0:
-        return False
-    return True
+    return visited_twice is None or touched[cave] == 0
 

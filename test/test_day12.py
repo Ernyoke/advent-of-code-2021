@@ -1,4 +1,5 @@
 from unittest import TestCase
+from collections import defaultdict
 
 from days.day12 import part1, part2
 from test.utils import read_lines
@@ -41,17 +42,11 @@ class Day12Tests(TestCase):
 
     @staticmethod
     def preprocess(data):
-        graph = {}
+        graph = defaultdict(set)
         for line in data:
-            parts = line.split('-')
-            if parts[0] in graph:
-                graph[parts[0]].append(parts[1])
-            else:
-                graph[parts[0]] = [parts[1]]
-            if parts[1] in graph:
-                graph[parts[1]].append(parts[0])
-            else:
-                graph[parts[1]] = [parts[0]]
+            source, destination = line.split('-')
+            graph[source].add(destination)
+            graph[destination].add(source)
         return graph
 
 
