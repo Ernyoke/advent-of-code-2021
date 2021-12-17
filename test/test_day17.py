@@ -16,7 +16,7 @@ class Day17Tests(TestCase):
     def test_part1(self):
         data = read_lines('inputs/day17.txt')
         coordinates = Day17Tests.preprocess(data)
-        self.assertEqual(45, part1(coordinates))
+        self.assertEqual(5886, part1(coordinates))
 
     def test_part2_test1(self):
         data = read_lines('inputs/day17_test1.txt')
