@@ -16,11 +16,11 @@ def part2(data):
 
 
 class Node:
-    def __init__(self, parent=None):
-        self.value = None
+    def __init__(self, parent=None, value=None):
+        self.parent = parent
+        self.value = value
         self.left = None
         self.right = None
-        self.parent = parent
 
     def __str__(self):
         if self.value is not None:
@@ -30,25 +30,24 @@ class Node:
 
     @staticmethod
     def from_list(lst):
-        return Node.__from_list_recursive(lst)
+        def __from_list_recursive(value):
+            node = Node()
 
-    @staticmethod
-    def __from_list_recursive(lst):
-        node = Node()
+            if isinstance(value, int):
+                node.value = value
+                return node
 
-        if isinstance(lst, int):
-            node.value = lst
+            a, b = value
+
+            node.left = __from_list_recursive(a)
+            node.right = __from_list_recursive(b)
+
+            node.left.parent = node
+            node.right.parent = node
+
             return node
 
-        a, b = lst
-
-        node.left = Node.__from_list_recursive(a)
-        node.right = Node.__from_list_recursive(b)
-
-        node.left.parent = node
-        node.right.parent = node
-
-        return node
+        return __from_list_recursive(lst)
 
 
 def add(node1, node2):
@@ -123,10 +122,8 @@ def reduce(root_node):
             continue
 
         if node.value is not None and node.value >= 10:
-            node.left = Node(node)
-            node.left.value = node.value // 2
-            node.right = Node(node)
-            node.right.value = node.value - (node.value // 2)
+            node.left = Node(parent=node, value=node.value // 2)
+            node.right = Node(parent=node, value=node.value - (node.value // 2))
             node.value = None
 
             done = False
@@ -140,7 +137,6 @@ def reduce(root_node):
 
 
 def magnitude(node):
-
     def __magnitude_rec(current_node):
         if current_node.value is not None:
             return current_node.value
@@ -148,6 +144,3 @@ def magnitude(node):
             return 3 * __magnitude_rec(current_node.left) + 2 * __magnitude_rec(current_node.right)
 
     return __magnitude_rec(node)
-
-
-
