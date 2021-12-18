@@ -80,7 +80,7 @@ def is_valid(lst):
 
 
 def convert_to_decimal(binary):
-    return int("".join(binary[3:6]), 2)
+    return int("".join(binary), 2)
 
 
 def compute(literals, type_id):

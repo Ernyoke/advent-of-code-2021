@@ -10,7 +10,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 class Day16Tests(TestCase):
     def test_part1_test1(self):
         data = read_lines('inputs/day16_test1.txt')
-        self.assertEqual(40, part1(data[0]))
+        self.assertEqual(9, part1(data[0]))
 
     def test_part1_test2(self):
         data = read_lines('inputs/day16_test2.txt')
@@ -48,12 +48,8 @@ class Day16Tests(TestCase):
         data = read_lines('inputs/day16_test9.txt')
         self.assertEqual(9, part2(data[0]))
 
-    def test_part2_test4(self):
-        data = read_lines('inputs/day16_test10.txt')
-        self.assertEqual(54, part2(data[0]))
-
     def test_part2_test5(self):
-        data = read_lines('inputs/day16_test11.txt')
+        data = read_lines('inputs/day16_test10.txt')
         self.assertEqual(3, part2(data[0]))
 
     def test_part2(self):
