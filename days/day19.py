@@ -90,15 +90,6 @@ transforms = [
 ]
 
 
-def transform_generator():
-    for transform in transforms:
-        yield transform
-
-
-def apply_transform(scanner, transform):
-    return [transform(*beacon) for beacon in scanner]
-
-
 def add(vec1, vec2):
     x1, y1, z1 = vec1
     x2, y2, z2 = vec2
@@ -112,7 +103,7 @@ def minus(vec1, vec2):
 
 
 def get_overlap(scanner1, scanner2):
-    for transform in transform_generator():
+    for transform in transforms:
         counter = Counter()
         scanner2_rotated = apply_transform(scanner2, transform)
         for vec1 in scanner1:
@@ -122,5 +113,9 @@ def get_overlap(scanner1, scanner2):
         if count >= 12:
             return vec, scanner2_rotated
     return None
+
+
+def apply_transform(scanner, transform):
+    return [transform(*beacon) for beacon in scanner]
 
 
