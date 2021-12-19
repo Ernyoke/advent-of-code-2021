@@ -96,10 +96,7 @@ def transform_generator():
 
 
 def apply_transform(scanner, transform):
-    rotated = []
-    for beacon in scanner:
-        rotated.append(transform(*beacon))
-    return rotated
+    return [transform(*beacon) for beacon in scanner]
 
 
 def add(vec1, vec2):
