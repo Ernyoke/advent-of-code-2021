@@ -1,4 +1,4 @@
-from functools import lru_cache
+from functools import cache
 
 
 def part1(player1, player2):
@@ -22,7 +22,7 @@ def part2(player1, player2):
     return max(*count_universes(player1, 0, player2, 0))
 
 
-@lru_cache(maxsize=None)
+@cache
 def count_universes(player1, score1, player2, score2):
     if score1 >= 21:
         return 1, 0
