@@ -4,24 +4,18 @@ from functools import lru_cache
 def part1(player1, player2):
     score1, score2 = 0, 0
     die = 1
-    plays = 0
     while True:
         player1 = (player1 + (3 * die + 3)) % 10
         die += 3
+        score1 += (10 if player1 == 0 else player1)
+        if score1 >= 1000:
+            return score2 * (die - 1)
+
         player2 = (player2 + (3 * die + 3)) % 10
         die += 3
-
-        next_score1 = score1 + (10 if player1 == 0 else player1)
-        next_score2 = score2 + (10 if player2 == 0 else player2)
-
-        plays += 6
-
-        if next_score1 >= 1000:
-            return score2 * (plays - 3)
-        elif next_score2 >= 1000:
-            return next_score1 * plays
-        else:
-            score1, score2 = next_score1, next_score2
+        score2 += (10 if player2 == 0 else player2)
+        if score2 >= 1000:
+            return score1 * (die - 1)
 
 
 def part2(player1, player2):
