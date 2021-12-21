@@ -34,8 +34,8 @@ def count_universes(player1, score1, player2, score2):
         for d2 in [1, 2, 3]:
             for d3 in [1, 2, 3]:
                 new_player1 = (player1 + d1 + d2 + d3) % 10
-                new_score_1 = score1 + (10 if new_player1 == 0 else new_player1)
-                res1, res2 = count_universes(player2, score2, new_player1, new_score_1)
+                new_score1 = score1 + (10 if new_player1 == 0 else new_player1)
+                res1, res2 = count_universes(player2, score2, new_player1, new_score1)
                 result = (result[0] + res2, result[1] + res1)
     return result
 
