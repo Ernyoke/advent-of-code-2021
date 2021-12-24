@@ -1,4 +1,4 @@
-import functools
+from functools import cache
 
 INSTRUCTIONS = []
 
@@ -17,10 +17,7 @@ def part2(instructions):
     return int(result[1])
 
 
-cache = {}
-
-
-@functools.cache
+@cache
 def run(step, x, y, w, z, interval):
     registers = {
         'x': x,
@@ -65,11 +62,6 @@ def run(step, x, y, w, z, interval):
             registers[instruction[1]] = 1 if a == registers[instruction[1]] else 0
 
     return run(step + 1, registers['x'], registers['y'], registers['w'], registers['z'], interval)
-
-
-def get_input(value, index):
-    str_value = str(value)
-    return int(str_value[index])
 
 
 def is_number(str_val):
